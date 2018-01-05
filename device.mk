@@ -281,7 +281,7 @@ PRODUCT_PACKAGES += \
     nanoapp_cmd
 
 # sensor utilities (only for userdebug and eng builds)
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
     nanotool \
     sensortest
@@ -352,7 +352,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.mode=concurrent
 
 # Enable SM log mechanism by default
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.smlog_switch=1 \
     ro.radio.log_prefix="modem_log_" \
@@ -397,7 +397,7 @@ PRODUCT_COPY_FILES += \
 INIT_COMMON_DIAG_RC := $(TARGET_COPY_OUT_VENDOR)/etc/init/init.diag.rc
 
 # Modem debugger
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus3/init.common.diag.rc.userdebug:$(INIT_COMMON_DIAG_RC)
 
@@ -438,9 +438,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Script that copies preloads directory from system_other to data partition
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus3/preloads_copy.sh:system/bin/preloads_copy.sh
-
-PRODUCT_PACKAGES_DEBUG += \
-    update_engine_client
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
@@ -501,7 +498,7 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service
 
 # Library used for VTS tests  (only for userdebug and eng builds)
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 # For VTS profiling.
 PRODUCT_PACKAGES += \
      libvts_profiling \
@@ -564,7 +561,7 @@ PRODUCT_PACKAGES += \
 
 # b/30349163
 # Set OnePlus3 default log size on userdebug/eng build to 1M
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=1M
 endif
 
