@@ -413,4 +413,7 @@
     <!-- Whether device has dash charging support -->
     <bool name="config_hasDashCharger">true</bool>
 
+    <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
+
 </resources>
