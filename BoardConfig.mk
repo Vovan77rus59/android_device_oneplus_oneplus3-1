@@ -90,7 +90,7 @@ ifneq ($(TARGET_USES_AOSP),true)
 TARGET_USES_QCOM_BSP := true
 endif
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=oneplus3 user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff loop.max_part=7
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
 
 BOARD_ROOT_EXTRA_FOLDERS := firmware firmware/radio persist
 BOARD_ROOT_EXTRA_SYMLINKS := /vendor/lib/dsp:/dsp
@@ -105,20 +105,16 @@ BOARD_EGL_CFG := device/oneplus/oneplus3/egl.cfg
 
 BOARD_KERNEL_BASE        := 0x80000000
 BOARD_KERNEL_PAGESIZE    := 4096
-ifneq ($(filter oneplus3_kasan, $(TARGET_PRODUCT)),)
-BOARD_KERNEL_OFFSET      := 0x80000
-BOARD_KERNEL_TAGS_OFFSET := 0x02500000
-BOARD_RAMDISK_OFFSET     := 0x02700000
-BOARD_MKBOOTIMG_ARGS     := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-else
 BOARD_KERNEL_TAGS_OFFSET := 0x02000000
 BOARD_RAMDISK_OFFSET     := 0x02200000
-endif
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
+
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_KERNEL_SOURCE := kernel/oneplus/msm8996
+TARGET_KERNEL_CONFIG := du_oneplus3_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_USES_UNCOMPRESSED_KERNEL := false
 
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
@@ -154,9 +150,6 @@ CAMERA_DAEMON_NOT_PRESENT := true
 
 #TARGET_LDPRELOAD := libNimsWrap.so
 
-# TARGET_COMPILE_WITH_MSM_KERNEL := true
-
-TARGET_KERNEL_APPEND_DTB := true
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := false
 

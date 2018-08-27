@@ -14,22 +14,12 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/oneplus/oneplus3-kernel/Image.lz4-dtb
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 PRODUCT_SHIPPING_API_LEVEL := 25
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus3/overlay
-
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
 
 # Input device files
 PRODUCT_COPY_FILES += \
