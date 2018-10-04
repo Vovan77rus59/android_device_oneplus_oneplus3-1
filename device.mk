@@ -24,6 +24,7 @@
 $(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
 $(call inherit-product, vendor/extras/configs/phone-xxhdpi-4096-dalvik-heap.mk)
 $(call inherit-product, vendor/extras/configs/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product, device/oneplus/extras/common.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -506,6 +507,3 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
-
-# Inherit from oppo-common
-$(call inherit-product, device/oppo/common/common.mk)
