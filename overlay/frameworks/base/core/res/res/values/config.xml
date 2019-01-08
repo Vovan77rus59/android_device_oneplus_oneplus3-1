@@ -415,4 +415,7 @@
     <!-- Disable AOD by default -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
+    <!-- Smart Pixels -->
+    <bool name="config_enableSmartPixels">true</bool>
+
 </resources>
