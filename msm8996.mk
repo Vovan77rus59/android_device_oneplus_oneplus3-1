@@ -27,7 +27,15 @@ endif
 TARGET_USES_NQ_NFC := false # bring-up hack
 BOARD_FRP_PARTITION_NAME :=frp
 
-TARGET_KERNEL_VERSION := 3.18
+ifneq ($(wildcard kernel/msm-3.18),)
+    TARGET_KERNEL_VERSION := 3.18
+    $(warning "Build with 3.18 kernel.")
+else ifneq ($(wildcard kernel/msm-4.4),)
+    TARGET_KERNEL_VERSION := 4.4
+    $(warning "Build with 4.4 kernel")
+else
+    $(warning "Unknown kernel")
+endif
 
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk
@@ -104,6 +112,7 @@ endif
 DEVICE_MANIFEST_FILE := device/qcom/msm8996/manifest.xml
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/msm8996/framework_manifest.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/qcom/common/vendor_framework_compatibility_matrix.xml
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
@@ -303,8 +312,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \
                     android.hardware.thermal@1.0-service
 
+# Set TARGET_MOUNT_POINTS_SYMLINKS to false
+TARGET_MOUNT_POINTS_SYMLINKS := false
+
 SDM660_DISABLE_MODULE := true
 
+ifeq ($(strip $(TARGET_KERNEL_VERSION)), 3.18)
 # Enable extra vendor libs
 ENABLE_EXTRA_VENDOR_LIBS := true
 PRODUCT_PACKAGES += vendor-extra-libs
+endif
+
+ifeq ($(strip $(TARGET_KERNEL_VERSION)), 4.4)
+# Enable vndk-sp Libraries
+PRODUCT_PACKAGES += vndk_package
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE:=true
+TARGET_USES_MKE2FS := true
+$(call inherit-product, build/make/target/product/product_launched_with_p.mk)
+endif
