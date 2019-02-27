@@ -19,13 +19,6 @@
 # HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.oneplus3    u:object_r:hal_light_default_exec:s0
 
-# Healthd
-/sys/devices/soc/soc:qcom,bcl/power_supply/bcl/type             u:object_r:sysfs_batteryinfo:s0
-/sys/devices/soc/msm-bcl-14/power_supply/fg_adc/type            u:object_r:sysfs_batteryinfo:s0
-
-# LEDs
-/sys/devices/soc/leds-qpnp-[0-9]+/leds(/.*)?                    u:object_r:sysfs_leds:s0
-
 # Power
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service-qti      u:object_r:hal_power_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.1-service-qti      u:object_r:hal_power_default_exec:s0
