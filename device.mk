@@ -21,6 +21,7 @@
 # definition file).
 #
 
+$(call inherit-product-if-exists, vendor/gapps/inline.mk)
 $(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
 $(call inherit-product, vendor/statix/config/dalvik/phone-xxhdpi-4096-dalvik-heap.mk)
 $(call inherit-product, vendor/statix/config/dalvik/phone-xxhdpi-2048-hwui-memory.mk)
