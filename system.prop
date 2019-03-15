@@ -182,6 +182,7 @@ persist.qfp=false
 persist.fuse_sdcard=true
 
 # Telephony
+telephony.lteOnCdmaDevice=1
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
 persist.vendor.data.mode=concurrent
@@ -189,10 +190,6 @@ persist.data.iwlan.enable=true
 
 # Time services
 persist.timed.enable=true
-
-# Touchscreen
-persist.vendor.qti.inputopts.enable=true
-persist.vendor.qti.inputopts.movetouchslop=0.6
 
 # Voltage          
 ro.cutoff_voltage_mv=3250
