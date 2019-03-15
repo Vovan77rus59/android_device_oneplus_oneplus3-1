@@ -52,7 +52,7 @@ on late-fs
 
 on post-fs-data
     # Create oemnvitems for RIL
-    mkdir /data/oemnvitems 0771 radio radio
+    mkdir /data/vendor/oemnvitems 0771 radio radio
 
     # NFC local data and nfcee xml storage
     mkdir /data/vendor/nfc 0770 nfc nfc
@@ -211,12 +211,6 @@ service dashd /sbin/dashd
     class core
     #critical
     group root system
-
-service ifaadaemon /system/bin/ifaadaemon
-    class late_start
-    user system
-    group system
-    writepid /dev/cpuset/system-background/tasks
 
 service remosaic_daemon /vendor/bin/remosaic_daemon
     class late_start
