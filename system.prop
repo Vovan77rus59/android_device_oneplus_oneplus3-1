@@ -126,7 +126,6 @@ ro.frp.pst=/dev/block/bootdevice/by-name/config
 # RIL
 DEVICE_PROVISIONED=1
 persist.radio.multisim.config=dsds
-persist.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.custom_ecc=1
 persist.vendor.radio.sib16_support=1
@@ -185,7 +184,6 @@ persist.fuse_sdcard=true
 # Telephony
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
-persist.data.mode=concurrent
 persist.vendor.data.mode=concurrent
 persist.data.iwlan.enable=true
 
