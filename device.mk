@@ -86,7 +86,6 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.bluetooth.soc=rome \
     vendor.qcom.bluetooth.soc=rome
 
 # Camera
