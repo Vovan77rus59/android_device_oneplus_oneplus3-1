@@ -44,8 +44,8 @@ ro.vendor.qti.sys.fw.bg_apps_limit=60
 Camera.no_navigation_bar=true
 vidc.enc.dcvs.extra-buff-count=2
 vendor.vidc.enc.disable.pq=true
-persist.vendor.camera.display.umax=1920x1080
-persist.vendor.camera.display.lmax=1280x720
+persist.sys.camera.display.umax=1920x1080
+persist.sys.camera.display.lmax=1280x720
 
 # CNE
 persist.vendor.cne.feature=1
