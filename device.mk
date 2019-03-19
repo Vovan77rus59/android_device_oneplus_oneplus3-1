@@ -91,7 +91,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libcamera_parameters_shim \
     libcamera_shim
 
 # CNE
