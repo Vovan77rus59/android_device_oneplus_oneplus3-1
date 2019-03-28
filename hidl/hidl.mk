@@ -75,7 +75,7 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.1-service
+    vendor.nxp.hardware.nfc@1.1-service
 
 # Power
 PRODUCT_PACKAGES += \
