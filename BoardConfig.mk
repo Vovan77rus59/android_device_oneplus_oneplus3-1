@@ -133,7 +133,7 @@ endif
 
 ifeq ($(BOARD_KERNEL_CMDLINE),)
 ifeq ($(TARGET_KERNEL_VERSION),4.4)
-    BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 androidboot.usbconfigfs=true
+    BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 androidboot.usbconfigfs=true swiotlb=2048
 else
     BOARD_KERNEL_CMDLINE += console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0
 endif
