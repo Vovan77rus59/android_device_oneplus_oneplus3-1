@@ -125,6 +125,7 @@ ro.frp.pst=/dev/block/bootdevice/by-name/config
 
 # RIL
 DEVICE_PROVISIONED=1
+ro.telephony.default_network=22,20
 persist.radio.multisim.config=dsds
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.custom_ecc=1
