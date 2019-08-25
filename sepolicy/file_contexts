@@ -20,8 +20,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.oneplus3    u:object_r:hal_light_default_exec:s0
 
 # Power
-/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service-qti      u:object_r:hal_power_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.1-service-qti      u:object_r:hal_power_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.1-service.oneplus3     u:object_r:hal_power_default_exec:s0
 
 # OTA
 /system/bin/move_time_data\.sh                                  u:object_r:move-time-data-sh_exec:s0
