@@ -1,5 +1,17 @@
 allow init dash_device:chr_file { getattr write ioctl};
+allow init hal_graphics_composer_default:process signull;
+allow init proc:file { open read write };
 allow init rootfs:file execute_no_trans;
 allow init sysfs_battery_supply:file { read open };
+allow init sysfs_devfreq:file { open read write };
+allow init sysfs_devices_system_cpu:file write;
+allow init sysfs_kgsl:file { open read write };
+allow init sysfs_lib:file { open write };
+allow init sysfs_msm_perf:file { open write };
+allow init sysfs_msm_power:file { open write };
 allow init sysfs_usb_supply:file { read open };
+allow init system_data_file:file append;
+allow init system_data_file:sock_file write;
+allow init system_file:file execute_no_trans;
 allow init vendor_file:file execute_no_trans;
+allow init vendor_toolbox_exec:file execute_no_trans;
