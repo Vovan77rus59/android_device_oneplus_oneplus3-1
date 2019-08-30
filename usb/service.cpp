@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.usb@1.1-service.marlin"
+#define LOG_TAG "android.hardware.usb@1.1-service.oneplus3"
 
 #include <hidl/HidlTransportSupport.h>
 #include "Usb.h"

@@ -4,8 +4,7 @@
 #
 
 TARGET_BOARD_PLATFORM := msm8996
-TARGET_BOOTLOADER_BOARD_NAME := marlin
-TARGET_BOARD_INFO_FILE := device/google/marlin/marlin/board-info.txt
+TARGET_BOOTLOADER_BOARD_NAME := oneplus3
 
 TARGET_USES_INTERACTION_BOOST := true
 
@@ -25,11 +24,7 @@ TARGET_2ND_CPU_VARIANT := kryo
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
 TARGET_NO_RECOVERY := true
-ifneq ($(findstring aosp_marlin_svelte, $(TARGET_PRODUCT)),)
-TARGET_RECOVERY_FSTAB := device/google/marlin/fstab.aosp_svelte
-else
-TARGET_RECOVERY_FSTAB := device/google/marlin/fstab.common
-endif
+TARGET_RECOVERY_FSTAB := device/oneplus/oneplus3/fstab.qcom
 BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOOTLOADER_GCC_VERSION := arm-eabi-4.8
@@ -54,12 +49,12 @@ TARGET_USES_QCOM_MM_AUDIO := true
 
 -include $(QCPATH)/common/msm8996/BoardConfigVendor.mk
 
-TARGET_AUX_OS_VARIANT_LIST := marlin
+TARGET_AUX_OS_VARIANT_LIST := oneplus3
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
 BOARD_USES_WIPOWER := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/google/marlin/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/oneplus3/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_USES_SDM845_BLUETOOTH_HAL := true
 BOARD_HAS_QCA_BT_ROME := true
@@ -84,11 +79,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x02000000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
 BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT := 4096
-ifneq ($(findstring aosp_marlin_svelte, $(TARGET_PRODUCT)),)
-BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := squashfs
-BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
-BOARD_SYSTEMIMAGE_SQUASHFS_COMPRESSOR := lz4
-endif
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -100,22 +90,22 @@ ifneq ($(TARGET_USES_AOSP),true)
 TARGET_USES_QCOM_BSP := true
 endif
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=marlin user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff loop.max_part=7
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=oneplus3 user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff loop.max_part=7
 
 BOARD_ROOT_EXTRA_FOLDERS := firmware firmware/radio persist
 BOARD_ROOT_EXTRA_SYMLINKS := /vendor/lib/dsp:/dsp
 
-BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy
-ifneq ($(filter marlin marlinf, $(TARGET_PRODUCT)),)
-BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy/verizon
+BOARD_SEPOLICY_DIRS += device/oneplus/oneplus3/sepolicy
+ifneq ($(filter oneplus3 oneplus3f, $(TARGET_PRODUCT)),)
+BOARD_SEPOLICY_DIRS += device/oneplus/oneplus3/sepolicy/verizon
 endif
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR := device/google/marlin/sepolicy/private
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR := device/oneplus/oneplus3/sepolicy/private
 
-BOARD_EGL_CFG := device/google/marlin/egl.cfg
+BOARD_EGL_CFG := device/oneplus/oneplus3/egl.cfg
 
 BOARD_KERNEL_BASE        := 0x80000000
 BOARD_KERNEL_PAGESIZE    := 4096
-ifneq ($(filter marlin_kasan, $(TARGET_PRODUCT)),)
+ifneq ($(filter oneplus3_kasan, $(TARGET_PRODUCT)),)
 BOARD_KERNEL_OFFSET      := 0x80000
 BOARD_KERNEL_TAGS_OFFSET := 0x02500000
 BOARD_RAMDISK_OFFSET     := 0x02700000
@@ -180,12 +170,12 @@ HAVE_SYNAPTICS_DSX_FW_UPGRADE := true
 # Enable MDTP (Mobile Device Theft Protection)
 TARGET_USE_MDTP := true
 
-TARGET_BOARD_KERNEL_HEADERS := device/google/marlin/kernel-headers
+TARGET_BOARD_KERNEL_HEADERS := device/oneplus/oneplus3/kernel-headers
 
 # Install odex files into the other system image
 BOARD_USES_SYSTEM_OTHER_ODEX := true
 
--include vendor/google_devices/marlin/BoardConfigVendor.mk
+-include vendor/oneplus_devices/oneplus3/BoardConfigVendor.mk
 # Build a separate vendor.img
 TARGET_COPY_OUT_VENDOR := vendor
 
@@ -200,13 +190,9 @@ TARGET_USES_MKE2FS := true
 
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
-ifneq ($(findstring marlin_svelte, $(TARGET_PRODUCT)),)
-MALLOC_SVELTE := true
-endif
-
-DEVICE_MANIFEST_FILE := device/google/marlin/manifest.xml
-DEVICE_MATRIX_FILE   := device/google/marlin/compatibility_matrix.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/google/marlin/device_framework_matrix.xml
+DEVICE_MANIFEST_FILE := device/oneplus/oneplus3/manifest.xml
+DEVICE_MATRIX_FILE   := device/oneplus/oneplus3/compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/oneplus/oneplus3/device_framework_matrix.xml
 
 # Exclude serif fonts for saving system.img size.
 EXCLUDE_SERIF_FONTS := true

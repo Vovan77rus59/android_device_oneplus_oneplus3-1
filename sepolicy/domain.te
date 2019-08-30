@@ -8,7 +8,7 @@ dontaudit domain kernel:system module_request;
 # eventually calls filp_open(), which attempts to look in /firmware
 # for the firmware file itself using the context of the calling
 # domain.
-# This does not occur on other Android builds because the marlin
+# This does not occur on other Android builds because the oneplus3
 # kernel has various references to /firmware paths in the following
 # code:
 #

@@ -44,13 +44,10 @@
 #$(call add-clean-step, find $(OUT_DIR) -type f -name "IGTalkSession*" -print0 | xargs -0 rm -f)
 #$(call add-clean-step, rm -rf $(PRODUCT_OUT)/data/*)
 
-$(call add-clean-step, find $(OUT_DIR)/target/product/marlin/ -name \*sensors.marlin* -exec rm -rf {} \;)
-$(call add-clean-step, find $(OUT_DIR)/target/product/marlin/ -name \*activity_recognition.marlin* -exec rm -rf {} \;)
-$(call add-clean-step, find $(OUT_DIR)/target/product/sailfish/ -name \*sensors.sailfish* -exec rm -rf {} \;)
-$(call add-clean-step, find $(OUT_DIR)/target/product/sailfish/ -name \*activity_recognition.sailfish* -exec rm -rf {} \;)
+$(call add-clean-step, find $(OUT_DIR)/target/product/oneplus3/ -name \*sensors.oneplus3* -exec rm -rf {} \;)
+$(call add-clean-step, find $(OUT_DIR)/target/product/oneplus3/ -name \*activity_recognition.oneplus3* -exec rm -rf {} \;)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/app/WebViewGoogle)
-$(call add-clean-step, rm -f $(OUT_DIR)/target/product/marlin/system/lib/hw/android.hardware.broadcastradio@1.0-impl.so)
-$(call add-clean-step, rm -f $(OUT_DIR)/target/product/sailfish/system/lib/hw/android.hardware.broadcastradio@1.0-impl.so)
+$(call add-clean-step, rm -f $(OUT_DIR)/target/product/oneplus3/system/lib/hw/android.hardware.broadcastradio@1.0-impl.so)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/root/metadata)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/recovery/root/metadata)
 
@@ -74,8 +71,7 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib/vndk-sp/libz.so)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib64/vndk-sp/libz.so)
 
 # Remove init.recovery.*.rc file in root directory (only needed in recovery root).
-$(call add-clean-step, rm -rf $(PRODUCT_OUT)/root/init.recovery.marlin.rc)
-$(call add-clean-step, rm -rf $(PRODUCT_OUT)/root/init.recovery.sailfish.rc)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/root/init.recovery.oneplus3.rc)
 
 # Remove /system/lib[64]/vndk-sp/android.hardware.graphics.allocator@2.0.so
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib/vndk-sp/android.hardware.graphics.allocator@2.0.so)

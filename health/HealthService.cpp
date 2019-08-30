@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.health@2.0-service.marlin"
+#define LOG_TAG "android.hardware.health@2.0-service.oneplus3"
 #include <android-base/logging.h>
 
 #include <healthd/healthd.h>
@@ -34,8 +34,8 @@
 
 using android::hardware::health::V2_0::StorageInfo;
 using android::hardware::health::V2_0::DiskStats;
-using ::device::google::marlin::health::CycleCountBackupRestore;
-using ::device::google::marlin::health::LearnedCapacityBackupRestore;
+using ::device::google::oneplus3::health::CycleCountBackupRestore;
+using ::device::google::oneplus3::health::LearnedCapacityBackupRestore;
 
 static constexpr int kBackupTrigger = 20;
 static constexpr size_t kDiskStatsSize = 11;

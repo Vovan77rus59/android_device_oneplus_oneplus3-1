@@ -1,5 +1,5 @@
 #
-# Copyright 2015 The Android Open Source Project
+# Copyright 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,26 +14,17 @@
 # limitations under the License.
 #
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
-
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-PRODUCT_NAME := aosp_sailfish
-PRODUCT_DEVICE := sailfish
+PRODUCT_NAME := aosp_oneplus3
+PRODUCT_DEVICE := oneplus3
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on msm8996
-PRODUCT_MANUFACTURER := google
-PRODUCT_RESTRICT_VENDOR_FILES := true
+PRODUCT_MODEL := OnePlus 3
+PRODUCT_MANUFACTURER := OnePlus
 
-PRODUCT_COPY_FILES += device/google/marlin/fstab.common:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.sailfish
+PRODUCT_COPY_FILES += device/oneplus/oneplus3/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom
 
-$(call inherit-product, device/google/marlin/device-sailfish.mk)
-$(call inherit-product-if-exists, vendor/google_devices/marlin/device-vendor-sailfish.mk)
-
-PRODUCT_PACKAGES += \
-    Launcher3QuickStep \
-    WallpaperPicker
+$(call inherit-product, device/oneplus/oneplus3/device.mk)
 

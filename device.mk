@@ -14,12 +14,8 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL marlin and sailfish devices
-#
-# Everything in this directory will become public
-
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/google/marlin-kernel/Image.lz4-dtb
+    LOCAL_KERNEL := device/oneplus/oneplus3-kernel/Image.lz4-dtb
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -30,33 +26,28 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
-DEVICE_PACKAGE_OVERLAYS += device/google/marlin/overlay
+DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus3/overlay
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
 # Input device files
 PRODUCT_COPY_FILES += \
-    device/google/marlin/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
-    device/google/marlin/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl \
-    device/google/marlin/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
-    device/google/marlin/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
-    device/google/marlin/synaptics_dsxv26.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/synaptics_dsxv26.idc \
+    device/oneplus/oneplus3/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
+    device/oneplus/oneplus3/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl \
+    device/oneplus/oneplus3/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
+    device/oneplus/oneplus3/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
+    device/oneplus/oneplus3/synaptics_dsxv26.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/synaptics_dsxv26.idc \
     frameworks/native/services/vr/virtual_touchpad/idc/vr-virtual-touchpad-0.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/vr-virtual-touchpad-0.idc \
     frameworks/native/services/vr/virtual_touchpad/idc/vr-virtual-touchpad-1.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/vr-virtual-touchpad-1.idc \
 
 # copy customized media_profiles and media_codecs xmls for msm8996
 PRODUCT_COPY_FILES += \
-    device/google/marlin/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
-    device/google/marlin/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
+    device/oneplus/oneplus3/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
+    device/oneplus/oneplus3/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
 
-ifneq ($(findstring marlin_svelte, $(TARGET_PRODUCT)),)
 PRODUCT_COPY_FILES += \
-    device/google/marlin/media_codecs_performance_svelte.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
-else
-PRODUCT_COPY_FILES += \
-    device/google/marlin/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
-endif
+    device/oneplus/oneplus3/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -64,7 +55,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, device/google/marlin/common/common64.mk)
+$(call inherit-product, device/oneplus/oneplus3/common/common64.mk)
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
@@ -84,6 +75,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # HWUI common settings
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.texture_cache_size=72 \
+    ro.hwui.layer_cache_size=48 \
+    ro.hwui.path_cache_size=32 \
     ro.hwui.gradient_cache_size=1 \
     ro.hwui.drop_shadow_cache_size=6 \
     ro.hwui.r_buffer_cache_size=8 \
@@ -93,6 +87,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_large_cache_width=2048 \
     ro.hwui.text_large_cache_height=1024
 
+PRODUCT_COPY_FILES += \
+    device/oneplus/oneplus3/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
+    device/oneplus/oneplus3/audio_platform_info_tasha_oneplus3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_tasha.xml \
+    device/oneplus/oneplus3/init.recovery.common.rc:recovery/root/init.recovery.oneplus3.rc
+
+PRODUCT_COPY_FILES += \
+    device/oneplus/oneplus3/nfc/libnfc-nxp.oneplus3.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
+
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += fs_config_files \
                     fs_config_dirs
@@ -100,17 +102,17 @@ PRODUCT_PACKAGES += fs_config_files \
 # Audio configuration
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
-    device/google/marlin/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
-    device/google/marlin/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
-    device/google/marlin/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
-    device/google/marlin/mixer_paths_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tasha_t50.xml \
-    device/google/marlin/aanc_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/aanc_tuning_mixer.txt \
-    device/google/marlin/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
-    device/google/marlin/sound_trigger_mixer_paths_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_tasha_t50.xml \
-    device/google/marlin/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
-    device/google/marlin/audio_platform_info_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_tasha_t50.xml \
-    device/google/marlin/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    device/google/marlin/audio_policy_volumes_drc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_drc.xml \
+    device/oneplus/oneplus3/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+    device/oneplus/oneplus3/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+    device/oneplus/oneplus3/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    device/oneplus/oneplus3/mixer_paths_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tasha_t50.xml \
+    device/oneplus/oneplus3/aanc_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/aanc_tuning_mixer.txt \
+    device/oneplus/oneplus3/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
+    device/oneplus/oneplus3/sound_trigger_mixer_paths_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths_tasha_t50.xml \
+    device/oneplus/oneplus3/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
+    device/oneplus/oneplus3/audio_platform_info_tasha_t50.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_tasha_t50.xml \
+    device/oneplus/oneplus3/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    device/oneplus/oneplus3/audio_policy_volumes_drc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_drc.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/hearing_aid_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/hearing_aid_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
@@ -119,6 +121,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml
+
+# Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.vc_call_vol_steps=7 \
+    fmas.hdph_sgain=0
 
 # Enable AAudio MMAP/NOIRQ data path.
 # 2 is AAUDIO_POLICY_AUTO so it will try MMAP then fallback to Legacy path.
@@ -141,11 +148,11 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.light@2.0-service \
     android.hardware.memtrack@1.0-service \
-    android.hardware.power@1.1-service.marlin \
+    android.hardware.power@1.1-service.oneplus3 \
     android.hardware.sensors@1.0-service \
     android.hardware.vr@1.0-service \
 
-PRODUCT_PROPERTY_OVERRIDES += ro.hardware.power=marlin
+PRODUCT_PROPERTY_OVERRIDES += ro.hardware.power=oneplus3
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -153,6 +160,7 @@ PRODUCT_PACKAGES += \
 
 # Light HAL
 PRODUCT_PACKAGES += \
+    lights.oneplus3 \
     android.hardware.light@2.0-impl:64
 
 # Keymaster HAL
@@ -162,7 +170,7 @@ PRODUCT_PACKAGES += \
 
 # Usb HAL
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.1-service.marlin
+    android.hardware.usb@1.1-service.oneplus3
 
 # DRM HAL
 PRODUCT_PACKAGES += \
@@ -199,10 +207,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
-    device/google/marlin/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf     \
-    device/google/marlin/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf     \
-    device/google/marlin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_cfg.dat \
-    device/google/marlin/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+    device/oneplus/oneplus3/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf     \
+    device/oneplus/oneplus3/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf     \
+    device/oneplus/oneplus3/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_cfg.dat \
+    device/oneplus/oneplus3/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
 # MIDI feature
 PRODUCT_COPY_FILES += \
@@ -225,7 +233,7 @@ PRODUCT_COPY_FILES += \
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.marlin
+    android.hardware.dumpstate@1.0-service.oneplus3
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
@@ -266,7 +274,7 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl:64 \
     android.hardware.gatekeeper@1.0-service
 
-# Common sensor packages
+# Sensor packages
 TARGET_USES_NANOHUB_SENSORHAL := true
 NANOHUB_SENSORHAL_LID_STATE_ENABLED := true
 NANOHUB_SENSORHAL_SENSORLIST := $(LOCAL_PATH)/sensorhal/sensorlist.cpp
@@ -274,8 +282,10 @@ NANOHUB_SENSORHAL_DIRECT_REPORT_ENABLED := true
 NANOHUB_SENSORHAL_DYNAMIC_SENSOR_EXT_ENABLED := true
 
 PRODUCT_PACKAGES += \
+    activity_recognition.oneplus3 \
     android.hardware.sensors@1.0-impl:64 \
     android.hardware.contexthub@1.0-impl.nanohub:64 \
+    sensors.oneplus3
 
 PRODUCT_PACKAGES += \
     nanoapp_cmd
@@ -288,7 +298,7 @@ PRODUCT_PACKAGES += \
 endif
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
+    device/oneplus/oneplus3/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 #FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
@@ -296,19 +306,19 @@ PRODUCT_COPY_FILES += \
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
-    device/google/marlin/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+    device/oneplus/oneplus3/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # init scripts
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.rc \
-    device/google/marlin/init.common.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.usb.rc \
-    device/google/marlin/init.common.nanohub.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.nanohub.rc \
-    device/google/marlin/ueventd.common.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
-    device/google/marlin/init.radio.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.radio.sh \
-    device/google/marlin/init.power.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.power.sh \
-    device/google/marlin/init.mid.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.mid.sh \
-    device/google/marlin/init.foreground.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.foreground.sh \
-    device/google/marlin/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh
+    device/oneplus/oneplus3/init.common.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.rc \
+    device/oneplus/oneplus3/init.common.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.usb.rc \
+    device/oneplus/oneplus3/init.common.nanohub.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.nanohub.rc \
+    device/oneplus/oneplus3/ueventd.common.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
+    device/oneplus/oneplus3/init.radio.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.radio.sh \
+    device/oneplus/oneplus3/init.power.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.power.sh \
+    device/oneplus/oneplus3/init.mid.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.mid.sh \
+    device/oneplus/oneplus3/init.foreground.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.foreground.sh \
+    device/oneplus/oneplus3/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -320,12 +330,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Write Manufacturer & Model information in created media files.
 # IMPORTANT: ONLY SET THIS PROPERTY TO TRUE FOR PUBLIC DEVICES
-ifneq ($(filter aosp_sailfish% sailfish% aosp_marlin% marlin%, $(TARGET_PRODUCT)),)
 PRODUCT_PROPERTY_OVERRIDES += \
     media.recorder.show_manufacturer_and_model=true
-else
-$(error "you must decide whether to write manufacturer and model information into created media files for this device. ONLY ENABLE IT FOR PUBLIC DEVICE.")
-endif  #TARGET_PRODUCT
 
 # By default, enable zram; experiment can toggle the flag,
 # which takes effect on boot
@@ -387,6 +393,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.eis.enable=1 \
     persist.camera.is_type=4
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    fingerprint.oneplus3
+
 # Fingerprint HIDL implementation
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
@@ -399,14 +409,14 @@ INIT_COMMON_DIAG_RC := $(TARGET_COPY_OUT_VENDOR)/etc/init/init.diag.rc
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.diag.rc.userdebug:$(INIT_COMMON_DIAG_RC)
+    device/oneplus/oneplus3/init.common.diag.rc.userdebug:$(INIT_COMMON_DIAG_RC)
 
 # Subsystem ramdump
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.enable_ramdumps=1
 else
 PRODUCT_COPY_FILES += \
-    device/google/marlin/init.common.diag.rc.user:$(INIT_COMMON_DIAG_RC)
+    device/oneplus/oneplus3/init.common.diag.rc.user:$(INIT_COMMON_DIAG_RC)
 endif
 
 # Subsystem silent restart
@@ -414,8 +424,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=venus,AR6320,slpi,modem,adsp
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/thermal-engine-marlin.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf \
-    device/google/marlin/thermal-engine-marlin-vr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-vr.conf
+    device/oneplus/oneplus3/thermal-engine-oneplus3.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf \
+    device/oneplus/oneplus3/thermal-engine-oneplus3-vr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-vr.conf
 
 $(call inherit-product-if-exists, hardware/qcom/msm8996/msm8996.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8996/msm8996-gpu-vendor.mk)
@@ -450,7 +460,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Script that copies preloads directory from system_other to data partition
 PRODUCT_COPY_FILES += \
-    device/google/marlin/preloads_copy.sh:system/bin/preloads_copy.sh
+    device/oneplus/oneplus3/preloads_copy.sh:system/bin/preloads_copy.sh
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -497,11 +507,12 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.marlin \
+    android.hardware.vibrator@1.0-service.oneplus3 \
 
 # VR
 PRODUCT_PACKAGES += \
-    android.hardware.vr@1.0-impl:64
+    android.hardware.vr@1.0-impl:64 \
+    vr.oneplus3
 
 # Gralloc
 PRODUCT_PACKAGES += \
@@ -532,8 +543,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1
 
 PRODUCT_COPY_FILES += \
-    device/google/marlin/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
-    device/google/marlin/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpn551_fw.so
+    device/oneplus/oneplus3/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+    device/oneplus/oneplus3/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpn551_fw.so
 
 # Bootloader HAL used for A/B updates.
 PRODUCT_PACKAGES += \
@@ -565,15 +576,15 @@ $(call inherit-product, build/target/product/verity.mk)
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := \
-    device/google/marlin/recovery.wipe.common
+    device/oneplus/oneplus3/recovery.wipe.common
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
-    device/google/marlin/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
+    device/oneplus/oneplus3/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
 
 # Default permission grant exceptions
 PRODUCT_COPY_FILES += \
-    device/google/marlin/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
+    device/oneplus/oneplus3/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
 
 # A/B OTA dexopt package
 PRODUCT_PACKAGES += otapreopt_script
@@ -601,15 +612,8 @@ endif
 PRODUCT_PACKAGES += \
     toybox_static
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-ifeq (,$(filter aosp_marlin aosp_sailfish, $(TARGET_PRODUCT)))
-PRODUCT_PACKAGES += \
-    NexusLogger
-endif # filter it out for aosp build
-endif
-
 # b/30349163
-# Set Marlin/Sailfish default log size on userdebug/eng build to 1M
+# Set OnePlus3 default log size on userdebug/eng build to 1M
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=1M
 endif
@@ -621,27 +625,23 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Vendor seccomp policy files for media components:
 PRODUCT_COPY_FILES += \
-    device/google/marlin/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
+    device/oneplus/oneplus3/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
 # whitelisted app
 PRODUCT_COPY_FILES += \
-    device/google/marlin/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+    device/oneplus/oneplus3/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 # Privileged permissions whitelist
 PRODUCT_COPY_FILES += \
-    device/google/marlin/permissions/privapp-permissions-marlin.xml:system/etc/permissions/privapp-permissions-marlin.xml
+    device/oneplus/oneplus3/permissions/privapp-permissions-oneplus3.xml:system/etc/permissions/privapp-permissions-oneplus3.xml
 
 PRODUCT_PACKAGES += \
     vndk-sp
-
-# Marlin/Sailfish kernel doesn't have HEH filename encryption
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.crypto.volume.filenames_mode=aes-256-cts
 
 # Enable Perfetto traced
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.traced.enable=1
 
-# health HAL
+# Health HAL
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.marlin
+    android.hardware.health@2.0-service.oneplus3

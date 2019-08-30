@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Marlin/sailfish vibration hardware does not respond well to the new vibration pattern. -->
+    <!-- OnePlus3 vibration hardware does not respond well to the new vibration pattern. -->
     <bool name="use_simple_vibration_pattern">true</bool>
 </resources>
 

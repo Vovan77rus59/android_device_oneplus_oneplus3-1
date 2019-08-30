@@ -54,7 +54,7 @@ userdebug_or_eng(`
 
 # netd is a vendor daemon that is on /system; its functionality is related to
 # cellular data; since we allow telephony and telephony-data violations on
-# Marlin and Sailfish, we need to tag the dependency on netd with
+# OnePlus 3, we need to tag the dependency on netd with
 # socket_between_core_and_vendor_violators
 typeattribute location socket_between_core_and_vendor_violators;
 

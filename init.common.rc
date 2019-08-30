@@ -116,7 +116,7 @@ on fs
     restorecon_recursive /persist
     mkdir /persist/data 0700 system system
 
-    # for android.hardware.health@2.0-service.marlin cycle count backup
+    # for android.hardware.health@2.0-service.oneplus3 cycle count backup
     mkdir /persist/battery 0700 system system
 
 on post-fs

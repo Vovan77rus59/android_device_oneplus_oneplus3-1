@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2016, The Linux Foundation. All rights reserved.
+#  Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions are
@@ -27,6 +27,4 @@
 #  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-add_lunch_combo aosp_marlin-userdebug
-add_lunch_combo aosp_marlin_svelte-userdebug
-add_lunch_combo aosp_sailfish-userdebug
+add_lunch_combo aosp_oneplus3-userdebug

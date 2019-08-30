@@ -24,7 +24,7 @@
 
 namespace device {
 namespace google {
-namespace marlin {
+namespace oneplus3 {
 namespace health {
 
 static constexpr int kBucketCount = 8;
@@ -47,7 +47,7 @@ private:
 };
 
 } // namespace health
-} // namespace marlin
+} // namespace oneplus3
 } // namespace google
 } // namespace device
 

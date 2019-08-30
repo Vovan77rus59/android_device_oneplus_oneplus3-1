@@ -150,7 +150,7 @@ BT := javax.btobex
 BT += libattrib_static
 BT += hcidump.sh
 BT += libbt-vendor
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/google/marlin/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/oneplus3/bluetooth
 
 #C2DColorConvert
 C2DCC := libc2dcolorconvert
@@ -244,7 +244,7 @@ INIT += init.qcom.audio.sh
 INIT += ssr_setup
 INIT += enable_swap.sh
 INIT += init.qcom.uicc.sh
-INIT += fstab.common
+INIT += fstab.qcom
 INIT += init.qcom.debug.sh
 INIT += charger.fstab.qcom
 
@@ -825,17 +825,17 @@ PRODUCT_COPY_FILES := \
 #endif # BOARD_HAVE_BLUETOOTH_BLUEZ
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_oneplus_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oneplus_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_oneplus_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oneplus_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_oneplus_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oneplus_video.xml \
 
 # enable overlays to use our version of
 # source/resources etc.
-#DEVICE_PACKAGE_OVERLAYS += device/google/marlin/common/device/overlay
-#PRODUCT_PACKAGE_OVERLAYS += device/google/marlin/common/product/overlay
+#DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus3/common/device/overlay
+#PRODUCT_PACKAGE_OVERLAYS += device/oneplus/oneplus3/common/product/overlay
 
 # include additional build utilities
--include device/google/marlin/common/utils.mk
+-include device/oneplus/oneplus3/common/utils.mk
 
 #Enabling Ring Tones
 #include frameworks/base/data/sounds/OriginalAudio.mk

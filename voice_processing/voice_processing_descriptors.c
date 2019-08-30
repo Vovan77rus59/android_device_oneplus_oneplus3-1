@@ -31,7 +31,7 @@ const effect_descriptor_t qcom_product_aec_descriptor = {
         0,
         0,
         "Acoustic Echo Canceler",
-        "Qualcomm Fluence for Marlin/Sailfish"
+        "Qualcomm Fluence for OnePlus 3"
 };
 
 // Noise suppression 5dbdc480-3429-11e6-a499-0002a5d5c51b
@@ -43,5 +43,5 @@ const effect_descriptor_t qcom_product_ns_descriptor = {
         0,
         0,
         "Noise Suppression",
-        "Qualcomm Fluence for Marlin/Sailfish"
+        "Qualcomm Fluence for OnePlus 3"
 };

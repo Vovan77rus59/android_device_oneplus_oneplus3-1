@@ -1,7 +1,7 @@
 # TODO(b/62954877). On Android Wear, bootanim reads the time
 # during boot to display. It currently gets that time from a file
 # in /data/system. This should be moved. In the meantime, suppress
-# this denial on Marlin since this functionality is not used.
+# this denial on OnePlus3 since this functionality is not used.
 dontaudit bootanim system_data_file:dir read;
 
 # TODO(b/37205419): Remove upon resolution

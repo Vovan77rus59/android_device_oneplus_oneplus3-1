@@ -24,7 +24,7 @@
 
 namespace device {
 namespace google {
-namespace marlin {
+namespace oneplus3 {
 namespace health {
 
 class LearnedCapacityBackupRestore {
@@ -45,7 +45,7 @@ class LearnedCapacityBackupRestore {
 };
 
 }  // namespace health
-}  // namespace marlin
+}  // namespace oneplus3
 }  // namespace google
 }  // namespace device
 
