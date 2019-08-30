@@ -819,11 +819,6 @@ PRODUCT_COPY_FILES := \
     system/bluetooth/data/stack.conf:system/etc/bluetooth/stack.conf
 #endif # BOARD_HAVE_BLUETOOTH_BLUEZ
 
-PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_oneplus_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oneplus_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_oneplus_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oneplus_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_oneplus_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oneplus_video.xml \
-
 # enable overlays to use our version of
 # source/resources etc.
 #DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus3/common/device/overlay
