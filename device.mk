@@ -538,10 +538,6 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/624000.ufshc/by-name/
 PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc/624000.ufshc/by-name/vendor
 $(call inherit-product, build/target/product/verity.mk)
 
-# Partitions (listed in the file) to be wiped under recovery.
-TARGET_RECOVERY_WIPE := \
-    device/oneplus/oneplus3/recovery.wipe.common
-
 # GPS configuration file
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus3/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
