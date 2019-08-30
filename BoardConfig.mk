@@ -25,7 +25,6 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
 TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_FSTAB := device/oneplus/oneplus3/fstab.qcom
-BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOOTLOADER_GCC_VERSION := arm-eabi-4.8
 # use msm8996 LK configuration

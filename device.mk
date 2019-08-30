@@ -425,19 +425,6 @@ PRODUCT_PACKAGES += \
     keystore.msm8996 \
     gatekeeper.msm8996
 
-# Use the A/B updater.
-AB_OTA_UPDATER := true
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_verifier
-
-# Enable update engine sideloading by including the static version of the
-# boot_control HAL and its dependencies.
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.msm8996 \
-    libgptutils \
-    libz \
-    libcutils
 PRODUCT_PACKAGES += \
     update_engine_sideload
 
@@ -454,13 +441,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
-
-# A/B updater updatable partitions list. Keep in sync with the partition list
-# with "_a" and "_b" variants in the device. Note that the vendor can add more
-# more partitions to this list for the bootloader and radio.
-AB_OTA_PARTITIONS += \
-    boot \
-    system
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
@@ -536,12 +516,6 @@ PRODUCT_COPY_FILES += \
     device/oneplus/oneplus3/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
     device/oneplus/oneplus3/nfc/libpn551_fw.so:$(TARGET_COPY_OUT_VENDOR)/lib/libpn551_fw.so
 
-# Bootloader HAL used for A/B updates.
-PRODUCT_PACKAGES += \
-    bootctrl.msm8996
-PRODUCT_PACKAGES_DEBUG += \
-    bootctl
-
 # Storage: for factory reset protection feature
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/soc/624000.ufshc/by-name/frp
@@ -575,16 +549,6 @@ PRODUCT_COPY_FILES += \
 # Default permission grant exceptions
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus3/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
-
-# A/B OTA dexopt package
-PRODUCT_PACKAGES += otapreopt_script
-
-# A/B OTA dexopt update_engine hookup
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
 
 #Reduce cost of scrypt for FBE CE decryption
 PRODUCT_PROPERTY_OVERRIDES += \
