@@ -150,8 +150,7 @@ PRODUCT_PACKAGES += \
 
 # Light HAL
 PRODUCT_PACKAGES += \
-    lights.oneplus3 \
-    android.hardware.light@2.0-impl:64
+    android.hardware.light@2.0-service.oneplus3 \
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
