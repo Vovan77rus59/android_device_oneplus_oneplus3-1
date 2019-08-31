@@ -115,6 +115,9 @@ BOARD_USES_QCNE := true
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
 
+# Disable QMI EAP-SIM security
+DISABLE_EAP_PROXY := true
+
 # Display
 BOARD_USES_ADRENO := true
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
