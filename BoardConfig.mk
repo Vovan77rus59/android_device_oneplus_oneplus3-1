@@ -112,5 +112,8 @@ ifeq ($(HOST_OS),linux)
     endif
 endif
 
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+
 #Enable DRM plugins 64 bit compilation
 TARGET_ENABLE_MEDIADRM_64 := true
