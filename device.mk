@@ -20,6 +20,10 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 PRODUCT_PROPERTY_OVERRIDES += \
     qemu.hw.mainkeys=0
 
+# Keylayout
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:$(TARGET_OUT_KEYLAYOUT)/synaptics_dsx.kl
+
 # copy customized media_profiles and media_codecs xmls for msm8996
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
@@ -125,3 +129,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.wipower=true \
     ro.vendor.bluetooth.wipower=true
+
+# Wifi configs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/hostapd.conf:$(TARGET_OUT_ETC)/hostapd/hostapd.conf \
+    $(LOCAL_PATH)/wifi/hostapd.accept:$(TARGET_OUT_ETC)/hostapd/hostapd.accept \
+    $(LOCAL_PATH)/wifi/hostapd.deny:$(TARGET_OUT_ETC)/hostapd/hostapd.deny \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
