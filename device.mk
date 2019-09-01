@@ -109,6 +109,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.qti:$(TARGET_OUT_VENDOR_ETC)/fstab.qti \
     $(LOCAL_PATH)/init.target.rc:$(TARGET_OUT_VENDOR_ETC)/init/hw/init.target.rc
 
+# Recovery
+PRODUCT_PACKAGES += \
+    librecovery_updater_op3
+
 # Treble
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
