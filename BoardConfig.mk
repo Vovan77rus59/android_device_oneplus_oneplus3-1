@@ -96,9 +96,6 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
-#Enable Peripheral Manager
-TARGET_PER_MGR_ENABLED := true
-
 # FDE
 TARGET_HW_DISK_ENCRYPTION := true
 
