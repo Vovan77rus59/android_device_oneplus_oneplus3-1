@@ -39,8 +39,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += telephony-ext
 
-PRODUCT_BOOT_JARS += WfdCommon
-
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/hidl/manifest.xml
 DEVICE_MATRIX_FILE   := $(LOCAL_PATH)/hidl/compatibility_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(LOCAL_PATH)/hidl/framework_manifest.xml
