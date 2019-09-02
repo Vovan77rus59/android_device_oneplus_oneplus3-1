@@ -107,7 +107,18 @@ $(LOCAL_PATH)/configs/powerhint.xml:system/etc/powerhint.xml
 # Init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.qti:$(TARGET_OUT_VENDOR_ETC)/fstab.qti \
-    $(LOCAL_PATH)/init.target.rc:$(TARGET_OUT_VENDOR_ETC)/init/hw/init.target.rc
+    $(LOCAL_PATH)/init.target.rc:$(TARGET_OUT_VENDOR_ETC)/init/hw/init.target.rc \
+    $(LOCAL_PATH)/init.class_late.sh:$(TARGET_OUT_VENDOR_EXECUTABLES)/init.class_late.sh \
+    $(LOCAL_PATH)/init.class_main.sh:$(TARGET_OUT_VENDOR_EXECUTABLES)/init.class_main.sh \
+    $(LOCAL_PATH)/init.msm.usb.configfs.rc:$(TARGET_OUT_VENDOR_ETC)/init/hw/init.msm.usb.configfs.rc \
+    $(LOCAL_PATH)/init.qcom.class_core.sh:$(TARGET_OUT_VENDOR_EXECUTABLES)/init.qcom.class_core.sh \
+    $(LOCAL_PATH)/init.qcom.early_boot.sh:$(TARGET_OUT_VENDOR_EXECUTABLES)/init.qcom.early_boot.sh \
+    $(LOCAL_PATH)/init.qcom.post_boot.sh:$(TARGET_OUT_VENDOR_EXECUTABLES)/init.qcom.post_boot.sh \
+    $(LOCAL_PATH)/init.qcom.rc:$(TARGET_OUT_VENDOR_ETC)/init/hw/init.qcom.rc \
+    $(LOCAL_PATH)/init.qcom.sh:$(TARGET_OUT_VENDOR_EXECUTABLES)/init.qcom.sh \
+    $(LOCAL_PATH)/init.qcom.usb.rc:$(TARGET_OUT_VENDOR_ETC)/init/hw/init.qcom.usb.rc \
+    $(LOCAL_PATH)/init.qcom.usb.sh:$(TARGET_OUT_VENDOR_EXECUTABLES)/init.qcom.usb.sh \
+    $(LOCAL_PATH)/ueventd.qcom.rc:$(TARGET_OUT_VENDOR)/ueventd.qcom.rc
 
 # Recovery
 PRODUCT_PACKAGES += \
