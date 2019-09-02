@@ -71,9 +71,6 @@ TARGET_KERNEL_CONFIG := lineageos_oneplus3_defconfig
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
-# ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
-
 # Audio
 #AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
