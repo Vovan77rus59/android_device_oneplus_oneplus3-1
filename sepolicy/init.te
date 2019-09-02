@@ -1,0 +1,5 @@
+allow init hidl_base_hwservice:hwservice_manager add;
+allow init hwservicemanager:binder { call transfer };
+allow init system_file:file execute_no_trans;
+allow init vendor_file:file execute_no_trans;
+allow init vendor_toolbox_exec:file execute_no_trans;

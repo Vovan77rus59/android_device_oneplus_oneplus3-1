@@ -1,0 +1,19 @@
+allow {
+  atfwd
+  cnd
+  hal_dpmQmiMgr
+  hal_gnss_qti
+  hal_imsrtp
+  hal_rcsservice
+  hal_sensors_default
+  ims
+  location
+  mm-qcamerad
+  netmgrd
+  port-bridge
+  qti
+  rmt_storage
+  sensors
+  time_daemon
+  wcnss_service
+} sysfs:file { create getattr open read setattr ioctl write relabelfrom };
