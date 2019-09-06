@@ -23,6 +23,9 @@ $(call inherit-product, device/oneplus/oneplus3/device.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Installs gsi keys into ramdisk, to boot a GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
 # Vendor security patch level
 VENDOR_SECURITY_PATCH := 2019-08-01
 
