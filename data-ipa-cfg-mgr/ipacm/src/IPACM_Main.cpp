@@ -609,7 +609,7 @@ void* ipa_driver_msg_notifier(void *param)
 
 		case WLAN_SWITCH_TO_SCC:
 			IPACMDBG_H("Received WLAN_SWITCH_TO_SCC\n");
-		case WLAN_WDI_ENABLE:
+		U_FALLTHROUGH; case WLAN_WDI_ENABLE:
 			IPACMDBG_H("Received WLAN_WDI_ENABLE\n");
 			if (IPACM_Iface::ipacmcfg->isMCC_Mode == true)
 			{
@@ -620,7 +620,7 @@ void* ipa_driver_msg_notifier(void *param)
 			continue;
 		case WLAN_SWITCH_TO_MCC:
 			IPACMDBG_H("Received WLAN_SWITCH_TO_MCC\n");
-		case WLAN_WDI_DISABLE:
+		U_FALLTHROUGH; case WLAN_WDI_DISABLE:
 			IPACMDBG_H("Received WLAN_WDI_DISABLE\n");
 			if (IPACM_Iface::ipacmcfg->isMCC_Mode == false)
 			{
