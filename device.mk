@@ -423,6 +423,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
+# Shims
+PRODUCT_PACKAGES += \
+    libui_shim
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
