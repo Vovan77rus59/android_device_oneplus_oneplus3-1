@@ -213,6 +213,11 @@ WITHOUT_LINEAGE_SEPOLICY := true
 # BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/public
 # BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/lib/libui.so|libui_shim.so \
+    /system/lib64/libui.so|libui_shim.so
+
 # Thermal
 USE_DEVICE_SPECIFIC_THERMAL := true
 
