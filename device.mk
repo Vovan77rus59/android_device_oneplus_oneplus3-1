@@ -142,6 +142,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.bluetooth.bluetooth_audio_hal.disabled=true \
     vendor.qcom.bluetooth.soc=rome
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera_shim
+
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     cneapiclient \
