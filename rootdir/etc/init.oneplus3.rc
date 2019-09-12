@@ -186,7 +186,6 @@ service dashd /sbin/dashd
     critical
     group root system
     writepid /dev/cpuset/system-background/tasks
-    disabled
 
 service remosaic_daemon /vendor/bin/remosaic_daemon
     class late_start
