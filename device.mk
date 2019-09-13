@@ -431,7 +431,27 @@ PRODUCT_PACKAGES += \
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    hardware/qcom/bt \
+    hardware/qcom/power \
+    hardware/qcom/camera \
+    hardware/qcom/keymaster \
+    hardware/qcom/wlan \
+    hardware/qcom/audio-caf/msm8996 \
+    hardware/qcom/display-caf/msm8996 \
+    hardware/qcom/media-caf/msm8996 \
+    vendor/oneplus/oneplus3 \
+    vendor/codeaurora/telephony \
+    vendor/nxp/opensource/commonsys/external/libnfc-nci \
+    vendor/nxp/opensource/commonsys/frameworks \
+    vendor/nxp/opensource/commonsys/packages/apps/Nfc \
+    vendor/nxp/opensource/halimpl \
+    vendor/nxp/opensource/hidlimpl \
+    vendor/nxp/opensource/interfaces/nfc \
+    vendor/qcom/opensource/audio \
+    vendor/qcom/opensource/cryptfs/hw \
+    vendor/qcom/opensource/dataservices \
+    vendor/qcom/opensource/interfaces
 
 # Shims
 PRODUCT_PACKAGES += \
