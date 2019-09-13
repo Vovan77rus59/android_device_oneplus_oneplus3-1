@@ -338,7 +338,7 @@ PRODUCT_PACKAGES += \
     nqnfcse_access.xml \
     Tag \
     com.android.nfc_extras \
-    vendor.nxp.hardware.nfc@1.1-service \
+    vendor.nxp.hardware.nfc@1.2-service \
     nfc_nci.nqx.default.hw
 
 PRODUCT_COPY_FILES += \
@@ -369,7 +369,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
+    android.hardware.power@1.2-service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
